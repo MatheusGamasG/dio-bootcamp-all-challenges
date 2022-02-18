@@ -2,7 +2,7 @@
 
 ### Flow
 
-graph LR
+flowchart LR
 A[Git] --> B[main branch]
 A --> C[footer branch]
 B --> D[merged main branch]
