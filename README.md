@@ -2,7 +2,6 @@
 
 ### Flow
 
-```mermaid
 graph LR
 A[Git] --> B[main branch]
 A --> C[footer branch]
