@@ -1,0 +1,19 @@
+#titulo, .post__titulo, .subtitulo {
+    color: blue;
+}
+
+.post__titulo {
+    font-size: 16px;
+    font-style:italic;
+}
+
+body {
+    background-color: #cccccc;
+}
+
+.post {
+    background-color: #ffffff;
+    padding:2rem;
+    border:3px solid black;
+    margin:2rem;
+}
