@@ -2,4 +2,10 @@
 
 ### Descrição
 
-Projeto para colocar em prática os conceitos básicos aprendidos no Bootcamp da Eduzz via Digital Innovation One :smile:
+- Repositório para organizar e concentrar todos os projetos do bootcamp Eduzz Fullstack Developer #3
+
+### Projects and Challenges Index
+
+- 1. Primeiro Repositório Git
+- 2. Primeiro website com HTML e CSS
+- 3. 
