@@ -1,19 +1,59 @@
+body {
+    background-color: #e9e9e9;
+    font-family: Verdana, Arial;
+    margin:auto;
+    width:80%;
+}
+
+
 #titulo, .post__titulo, .subtitulo {
-    color: blue;
+    color: rgb(43, 43, 43);
+}
+
+#titulo {
+    font-size: 2rem;
+    text-transform:uppercase;
+}
+
+a {
+    text-decoration:underline;
+    color:rgb(43, 43, 43);
+}
+
+.minha-foto {
+    border-radius:50%;
+    border: 4px solid rgb(255, 255, 255);
 }
 
 .post__titulo {
     font-size: 16px;
     font-style:italic;
-}
-
-body {
-    background-color: #cccccc;
+    margin:0;
+    margin-bottom:1rem;
 }
 
 .post {
     background-color: #ffffff;
     padding:2rem;
-    border:3px solid black;
-    margin:2rem;
+    border:3px solid rgb(43, 43, 43);
+    margin: 0 1rem 2rem 1rem;
+    border-radius:5px;
+}
+
+.post__content {
+    margin:0;
+    margin-bottom:1rem;
+    text-transform:capitalize;
+}
+
+.post__imagem {
+    margin-bottom:1rem;
+    width:100%;
+}
+
+.footer__contatos {
+    list-style:none;
+    margin:0;
+    padding:0 0 0 2rem;
+    margin-left:1rem;
 }
