@@ -8,7 +8,7 @@
     <body>
         <header>
             <img src="./img/matheus.png" alt="Ilustração do rosto de Matheus" class="minha-foto"/>
-            <h1 id="titulo">Matheus | Perfil</h1>
+            <h1 id="titulo">Matheus - Perfil</h1>
         </header>
         <section>
             <header>
@@ -19,7 +19,7 @@
                     <h3 class="post__titulo">Post #1 | HTML e CSS</h3>
                     <img src="./img/codepic.png" alt="Editor de texto mostrando código HTML" class="post__imagem"/>
                 </header>
-                <p class="post__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dignissim feugiat urna, in porttitor sapien semper at. Quisque vel mattis lectus. Vestibulum dignissim, dolor non euismod luctus, libero enim porta leo, vitae tincidunt augue tortor ut nibh. Sed sed neque at orci iaculis tincidunt at eu erat. Aenean eget imperdiet felis. Vestibulum aliquet ornare ex eu vulputate. Duis semper imperdiet urna, eu molestie nisi pulvinar vitae. Mauris dictum hendrerit odio id consequat. Nulla ullamcorper ultrices sem ac vulputate. Sed faucibus semper orci, ornare viverra leo maximus non. Aliquam pharetra in est nec scelerisque.</p>
+                <p class="post__conteúdo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dignissim feugiat urna, in porttitor sapien semper at. Quisque vel mattis lectus. Vestibulum dignissim, dolor non euismod luctus, libero enim porta leo, vitae tincidunt augue tortor ut nibh. Sed sed neque at orci iaculis tincidunt at eu erat. Aenean eget imperdiet felis. Vestibulum aliquet ornare ex eu vulputate. Duis semper imperdiet urna, eu molestie nisi pulvinar vitae. Mauris dictum hendrerit odio id consequat. Nulla ullamcorper ultrices sem ac vulputate. Sed faucibus semper orci, ornare viverra leo maximus non. Aliquam pharetra in est nec scelerisque.</p>
                 <footer>
                     Autor: <a href="https://www.linkedin.com/in/matheus-gamas-g/" target="_blank">Matheus Guimarães</a> | Contato: <a href="mailto:matheusgamasg@gmail.com target="_blank>matheusgamasg@gmail.com</a>
                 </footer>
@@ -27,10 +27,24 @@
         </section>
         <footer>
             <ul class="footer__contatos">
-                <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
-                <li><a href="https://www.facebook.com/matheus.guimaraes.58/" target="_blank">Facebook</a></li>
-                <li><a href="https://www.linkedin.com/in/matheus-gamas-g/" target="_blank">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" class="footer__contato">Instagram</a></li>
+                <li><a href="https://www.facebook.com/matheus.guimaraes.58/" target="_blank" class="footer__contato">Facebook</a></li>
+                <li><a href="https://www.linkedin.com/in/matheus-gamas-g/" target="_blank" class="footer__contato">LinkedIn</a></li>
             </ul>
         </footer>
+    <script>
+        const titulo = document.querySelector('#titulo');
+        setInterval( () => {
+            let conteudoTexto = titulo.textContent.split('');
+            titulo.innerHTML = '';
+            conteudoTexto.forEach((element, i) => {
+                setTimeout(function() {
+                titulo.innerHTML += element;
+                }, 75 * i);
+            }) 
+        }, 2000);
+
+</script>
     </body>
+
 </html>
