@@ -8,7 +8,7 @@
     <body>
         <header>
             <img src="./img/matheus.png" alt="Ilustração do rosto de Matheus" class="minha-foto"/>
-            <h1 id="titulo">Matheus - Perfil</h1>
+            <h1 id="titulo">Matheus | Perfil</h1>
         </header>
         <section>
             <header>
@@ -34,7 +34,9 @@
         </footer>
     <script>
         const titulo = document.querySelector('#titulo');
+        const timer = titulo.textContent.length;
         setInterval( () => {
+            let tempTimer = 0;
             let conteudoTexto = titulo.textContent.split('');
             titulo.innerHTML = '';
             conteudoTexto.forEach((element, i) => {
@@ -42,8 +44,7 @@
                 titulo.innerHTML += element;
                 }, 75 * i);
             }) 
-        }, 2000);
-
+        }, timer * 75 + 500);
 </script>
     </body>
 
