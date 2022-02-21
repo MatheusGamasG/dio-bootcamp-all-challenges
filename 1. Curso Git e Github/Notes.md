@@ -20,6 +20,7 @@ No Bash –
 **ssh-keygen   -t ed25519 -C e-mail ->** Gera uma chave SSH em uma pasta do computador que você adiciona lá no GITHUB, permitindo que seja possível fazer pushes ao github sem a necessidade de login. Gera uma chave privada e uma chave pública. Lá na aba setting do github adiciona-se a chave pública.
 
 **eval $(sshagent -s) ->** Starta um ssh agent
+
 **ssh-add chaveprivada ->** Configura a chave privada na sua máquina para descriptografar a mensagem chegando a partir dessa chave pública
             
 **Token –** Outra forma de autenticação. Mais simples, onde o GitHub gera um token e você o guarda em um arquivo seguro. Quando clonar repositórios privados é necessário inserir o token gerado.
@@ -28,12 +29,21 @@ No Bash –
 As branches são linhas de trabalhos diferentes;
 
 HEAD é o estado atual que se encontra os arquivos, antes de adicionar e commitar.
+
 **ls ->** Mostra os caminhos dos diretórios do computador.
+
 **cd path ->** Chama o caminho onde a pasta que você quer colocar no repositório, serve para a navegação entre pastas mesmo.
+
 **git init ->** Inicia um repositório a partir da pasta selecionada. O parâmetro --bare indica que o repositório iniciado só serve para armazenamento, não podfazer push.
+
 **git status ->** Mostra diversas informações do status do repositório.
+
 **git add ->** Para dar um commit de algum arquivo no repositório. Se passar git add . , passa a monitorar TODOS os arquivos da pasta.
+
 **git rm ->** Serve para remover um arquivo do monitoramento.
+
 **git config --local (ou global) user.name (ou user.email) “nome/email” ->** Coloca algumas configurações no git, como a sua identificação. Se for local, é apenanesse repositório específico, mas se for global vira para a máquina como um todo.
+
 **git config --list ->** Lista todas as configurações da máquina
+
 **git commit -m “mensagem” ->** Enviar o arquivo para um novo versionamento, a mensagem descreve as mudanças. Sempre que houver alguma modificação, para dar outrcommit, é necessário dar um git add file novamente.
