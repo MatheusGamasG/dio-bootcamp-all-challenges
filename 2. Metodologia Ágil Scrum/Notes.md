@@ -33,7 +33,8 @@ Timebox = tempo máximo para fazer uma cerimônia ou sprint
 
 Temos:
 - Planejamento da sprint Timebox: 8 horas – O que fazer? Como fazer?
-- Reuniões Diárias (Dailys) – Timebox: 15 minutos  - Diariamente | O que fez no dia anterior? O que vai fazer no dia? Tem algum impedimento? Às vezes utiliza o quadro KanBan: <img src="./img2.png" />
+- Reuniões Diárias (Dailys) – Timebox: 15 minutos  - Diariamente | O que fez no dia anterior? O que vai fazer no dia? Tem algum impedimento?
+Às vezes utiliza o quadro KanBan: <img src="./img2.png" />
 - Revisão da Sprint (Review) – Apresenta para o PO tudo o que desenvolveu.  Vê se agrega valor ao negócio. Timebox: 4 horas.
 - Retrospectiva da Sprint: Reunião da equipe (de dev principalmente) para as lições aprendidas e impedimentos. Muito baseada em transparência. Timebox: 3 horas.
 
@@ -44,6 +45,7 @@ Temos:
 *Épico:* Componentes principais (Objetivo macro)
 
 *Estória:* Objetivo macro quebrado em objetivos menores
+
 <img src="img4.png" />
 
 *Tarefa:* Tasks mais descritivas e bem específicas das Estórias. Passos práticos.
