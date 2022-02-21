@@ -1,5 +1,7 @@
 # Anotações de Curso Git
 
+Anotações que considero fora do meu escopo de conhecimento e/ou agregaram bastante e decidi anotar. 📖
+
 ## Sha1
 
 Sha1 -> Conjunto de 40 caracteres que identifica os commits. É uma técnica de codificação e é interessante pois identifica as mudanças realizadas nos arquivos. Se o arquivo A com um determinado sha1 sofre modificação, o arquivo ganha um novo sha1, mas se a modificação for desfeita e voltar a ser como era no ínicio, a identificação sha1 volta a ser a anterior. Muito otimizado.
