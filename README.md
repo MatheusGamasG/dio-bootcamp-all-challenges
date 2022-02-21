@@ -1,4 +1,4 @@
-# Primeiros passos no Git para o Bootcamp da DIO
+# Eduzz Bootcamp (Digital Innovation One)
 
 ### Descrição
 
@@ -6,6 +6,6 @@
 
 ### Projects and Challenges Index
 
-- 1. Primeiro Repositório Git
-- 2. Primeiro website com HTML e CSS
-- 3. 
+- Primeiro Repositório Git
+- Primeiro website com HTML e CSS
+- 
