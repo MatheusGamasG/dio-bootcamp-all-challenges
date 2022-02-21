@@ -1,6 +1,6 @@
 # Anotações Curso Gerenciamento de Projetos Scrum
 
-Anotações que considero fora do meu escopo de conhecimento e/ou agregaram bastante e decidi anotar. 📖
+Anotações fora do meu escopo de conhecimento ou agregaram bastante e decidi anotar. 📖
 
 ## Introdução
 
@@ -11,7 +11,7 @@ Requerimentos | Design | Implementação | Verificação | Manutenção
 
 **Gerenciamento de projetos ágil:** Software é construído por partes e cada parte é EXECUTADA em um ciclo. Cada ciclo é mensal. Descobre que estava errado em um mês.
 
-<img src="./img1.png" />
+<img src="./img/img1.png" />
 
 ## Srum - O que é?
 
@@ -34,19 +34,19 @@ Timebox = tempo máximo para fazer uma cerimônia ou sprint
 Temos:
 - Planejamento da sprint Timebox: 8 horas – O que fazer? Como fazer?
 - Reuniões Diárias (Dailys) – Timebox: 15 minutos  - Diariamente | O que fez no dia anterior? O que vai fazer no dia? Tem algum impedimento?
-Às vezes utiliza o quadro KanBan: <img src="./img2.png" />
+Às vezes utiliza o quadro KanBan: <img src="./img/img2.png" />
 - Revisão da Sprint (Review) – Apresenta para o PO tudo o que desenvolveu.  Vê se agrega valor ao negócio. Timebox: 4 horas.
 - Retrospectiva da Sprint: Reunião da equipe (de dev principalmente) para as lições aprendidas e impedimentos. Muito baseada em transparência. Timebox: 3 horas.
 
 **Backlog:** Elaboração é feita pelo PO, principalmente, junto com os demandantes. O backlog é composto por Épicos e Estórias
-<img src="./img3.png" />
+<img src="./img/img3.png" />
 
 **Diferença de Épico, Estória e Tarefa:**
 *Épico:* Componentes principais (Objetivo macro)
 
 *Estória:* Objetivo macro quebrado em objetivos menores
 
-<img src="img4.png" />
+<img src="./img/img4.png" />
 
 *Tarefa:* Tasks mais descritivas e bem específicas das Estórias. Passos práticos.
 
