@@ -6,7 +6,7 @@ Anotações fora do meu escopo de conhecimento ou agregaram bastante e decidi an
 
 A linguagem continua evoluindo e precisa passar por um número de etapas para novas propostas de atualização. (ECMAScript Proposals)
 
-É possível utilizar o Babel para verificar o seu código em outras versões.
+É possível utilizar o Babel para verificar o seu código em outras versões (é um transpilador).
 
 ### Conceitos básicos
 
@@ -44,7 +44,7 @@ A linguagem continua evoluindo e precisa passar por um número de etapas para no
 
 **boolean ->** true or false;
 
-**symbol ->** ?
+**symbol ->** Cria um símbolo de valor único
 
 ### Comandos
 
@@ -74,10 +74,102 @@ A linguagem continua evoluindo e precisa passar por um número de etapas para no
 
 **Object.seal(user) ->** Não dá pra deletar nem criar, mas é possível alterar as props que já existem.
 
+**switch-case ->** Para evitar muitos ifs em paralelo e com o código poluído. Sintaxe: *switch (variavel) {case condicional: console.log(x) case condicional2: console.log(y)}*
+
+**for-in ->** Itera pelas propriedades (e não os valores) dos objetos. Sintaxe: *for(let variavel in objeto) {console.log(variavel)}*
+**for-of ->** Itera pela propriedade [Symbol.iterator] dos objetos retornando seus valores. (se não tiver symbol.iterator for-of não funciona). Sintaxe: for(let variavel of objeto) {console.log(variavel)**
+
+**array.from(array-like) ->** Pega um array-like ou objeto iterável e coloca dentro de um array. É possível usar no nodelist do DOM, por exemplo.
+
+**array.unshift() ->** Adiciona um item no começo do array
+
+**array.shift() ->** Remove do início
+
+**array.concat(array2) ->** Concatena arrays e retorna um array novo
+
+**array.slice() ->** Corta algumas posições de um array e retorna um array novo (parâmetros = posição)
+
+**array.splice() ->** Não é imutável, remove do array os itens selecionados. (parâmetros = posição) Com mais parâmetros é possível remover e adicionar ao mesmo tempo.
+
+**array.forEach((params) => { fn }) ->** Itera por cada elemento do array executando uma função. 
+
+**array.flat() ->** Procura por recursividade no array, como, por exemplo, um array dentro do array, e retorna todos os itens no mesmo 'plano'.
+
+**array.keys() // array.values() // array.entries() ->** Cria um iterator para cada elemento do array. com o arrayIterator.next() keys retorna os index, values retorna os valores no array e entries retorna um par "index-valor".
+
+**array.find() ->** Procura no array e retorna o primeiro item que satisfaz à condição. Também existe a **array.findIndex()** que em vez de retornar o valor, retorna o index.
+
 **Array.map(function) ->** A call-back function vai iterar pelo array (assim como forEach), mas vai retornar um NOVO ARRAY com as alterações realizadas pela call-back function. Primeiro parâmetro da call-back function é o item que está sendo iterado, o segundo o index.
 
-**Array.filter(function) ->** Itera e filtra o array.
+**Array.filter(function) ->** Itera e forma um novo array com os elementos que passarem no teste condicional.
 
 **Array.reduce(callbackfunction, acumulador) ->** Executa cada item do array olhando por alguma coisa e retorna apenas um valor. Primeiro parâmetro é o acumulador da callback, segundo parâmetro é o valor atual do array
 
-**...array ->** Copia arrays ou objetos em uma nova variável, sem modificar o original. const array1 = [“a”, “b”]. const array2 = [ ...array1, “c”]. Isso se chama Spread e é específico do ES6.
+**...array ->** Copia arrays ou objetos em uma nova variável, sem modificar o original. *const array1 = [“a”, “b”]. const array2 = [ ...array1, “c”].* Isso se chama Spread e é específico do ES6.
+
+**array.firstIndexof(var) // array.lastIndexof(var) ->** Acha e retorna o index da primeira ou a última ocorrência do valor buscado.
+
+**array.includes(var) ->** Retorna boolean se tem ou não a var dentro do array.
+
+**array.some(callback) ->** Retorna se o array tem algum que passe pela condicional.
+
+**array.every(callback) ->** Retorna se todos os itens do array passa pela condicional
+
+**array.sort(callback) ->** Ordena um array a partir de alguma condição
+
+**array.reverse() ->** Reverte a ordem do array
+
+**array.join('-') ->** Retorna uma string separando os elementos por algum delimitador (no caso um -). Ex: [1, 2, 3] returns 1-2-3
+
+**
+
+
+
+## Orientação a objetos
+
+- **Herança:** Baseada em protótipos. Cria um conjunto básico que outros objetos herdarão.
+- **Classes:** Veio para simplificar o uso e manipulação do prototype na herança, as classes podem ser extensão de outras classes que efetuam a herança.
+- **Moficadores de Acesso:** Define atributos privados e públicos dentro da classe (ainda não implementado). Com os acessores (getters e setters)
+- **Encapsulamento:** Ocultar detalhes do funcionamento interno
+- **Static:** Criado diretamente na classe, sem precisar instanciar objetos
+
+##
+
+## Design Patterns
+
+São soluções generalistas para problemas recorrentes em desenvolvimento
+
+1. *Padrões de Criação:* Abstraem e/ou adiam o processo de criação dos objetos
+2. *Padrões Estruturais:* Se preocupam em como as classes e objetos são compostos para formar estruturas maiores
+3. *Padrões Comportamentais:* Se concentram nos algoritmos e padrões de responsabilidade entre os objetos. Padrões de objetos, classes e de comunicação entre os objetos.
+
+Mais utilizados:
+
+### Factory
+Toda função que retorna um objeto sem necessidade de um new são "de fábrica" (factory)
+
+<img src="./img1.png" />
+
+### Singleton
+Cria uma única instância de uma função construtora e retorná sempre a mesma instância
+
+<img src="./img2.png" />
+
+Exemplo seria o jQuery.
+
+P.S: Com os modules não é mais necessário
+
+### Decorator
+Recebe uma outra função como parâmetro e estende o seu funcionamento sem alterá-la explicitamente
+
+<img src="./img3.png" />
+
+### Observer
+Subscriber e Observers. A instância mantém uma coleção de observadores e irá notifica-los das mudanças de Estado.
+
+Artigo para <a href="https://oieduardorabelo.medium.com/padr%C3%B5es-em-js-observer-pattern-bff0ecc55d01">suporte<a>
+
+### Module
+Permite organizar melhor o código
+
+## Manipulação de Arrays
