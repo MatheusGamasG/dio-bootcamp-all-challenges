@@ -1,6 +1,6 @@
 # Anotações Curso Gerenciamento de Projetos Scrum
 
-Anotações fora do meu escopo de conhecimento ou agregaram bastante e decidi anotar. 📖
+Anotações fora do meu escopo de conhecimento ou que agregaram bastante e decidi anotar. 📖
 
 ## Introdução
 

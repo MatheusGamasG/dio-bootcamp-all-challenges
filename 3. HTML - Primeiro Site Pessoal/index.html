@@ -36,7 +36,6 @@
         const titulo = document.querySelector('#titulo');
         const timer = titulo.textContent.length;
         setInterval( () => {
-            let tempTimer = 0;
             let conteudoTexto = titulo.textContent.split('');
             titulo.innerHTML = '';
             conteudoTexto.forEach((element, i) => {

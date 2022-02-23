@@ -1,6 +1,6 @@
 # Curso de JavaScript
 
-Anotações fora do meu escopo de conhecimento ou agregaram bastante e decidi anotar. Omiti o que considero que já domino. 📖
+Anotações fora do meu escopo de conhecimento ou que agregaram bastante e decidi anotar. Omiti o que considero que já domino. 📖
 
 ## JavaScript
 
@@ -77,7 +77,7 @@ A linguagem continua evoluindo e precisa passar por um número de etapas para no
 **switch-case ->** Para evitar muitos ifs em paralelo e com o código poluído. Sintaxe: *switch (variavel) {case condicional: console.log(x) case condicional2: console.log(y)}*
 
 **for-in ->** Itera pelas propriedades (e não os valores) dos objetos. Sintaxe: *for(let variavel in objeto) {console.log(variavel)}*
-**for-of ->** Itera pela propriedade [Symbol.iterator] dos objetos retornando seus valores. (se não tiver symbol.iterator for-of não funciona). Sintaxe: for(let variavel of objeto) {console.log(variavel)**
+**for-of ->** Itera pela propriedade [Symbol.iterator] dos objetos retornando seus valores. (se não tiver symbol.iterator for-of não funciona). Sintaxe: *for(let variavel of objeto) {console.log(variavel)}*
 
 **array.from(array-like) ->** Pega um array-like ou objeto iterável e coloca dentro de um array. É possível usar no nodelist do DOM, por exemplo.
 
@@ -103,7 +103,7 @@ A linguagem continua evoluindo e precisa passar por um número de etapas para no
 
 **Array.filter(function) ->** Itera e forma um novo array com os elementos que passarem no teste condicional.
 
-**Array.reduce(callbackfunction, acumulador) ->** Executa cada item do array olhando por alguma coisa e retorna apenas um valor. Primeiro parâmetro é o acumulador da callback, segundo parâmetro é o valor atual do array
+**Array.reduce(callbackfunction, valorInicialAcumulador) ->** Executa cada item do array olhando por alguma coisa e retorna apenas um valor. Primeiro parâmetro é o acumulador da callback, segundo parâmetro é o valor atual do array
 
 **...array ->** Copia arrays ou objetos em uma nova variável, sem modificar o original. *const array1 = [“a”, “b”]. const array2 = [ ...array1, “c”].* Isso se chama Spread e é específico do ES6.
 
@@ -172,4 +172,4 @@ Artigo para <a href="https://oieduardorabelo.medium.com/padr%C3%B5es-em-js-obser
 ### Module
 Permite organizar melhor o código
 
-## Manipulação de Arrays
+##

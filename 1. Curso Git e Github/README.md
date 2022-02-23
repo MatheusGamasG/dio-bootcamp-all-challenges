@@ -1,6 +1,6 @@
 # Anotações de Curso Git
 
-Anotações fora do meu escopo de conhecimento ou agregaram bastante e decidi anotar. 📖
+Anotações fora do meu escopo de conhecimento ou que agregaram bastante e decidi anotar. 📖
 
 ## Sha1
 
