@@ -34,4 +34,42 @@ Os argumentos das funções podem ter um valor default. Na hora de declarar a fu
 
 ## Generators
 
-É possível fazer pauses entre as execuções de uma função **Sintaxe: function* nome() {execut; yield; execut2; yield}** usando *yield* para travar temporariamente a execução; O generator se comunica pela interface do symbol.iterator, então cada momento que encontrar um yield a função pausa e o restante será executado apenas se chamar um próximo next.
+É possível fazer pauses entre as execuções de uma função **Sintaxe: function* nome() {execut; yield; execut2; yield}** usando *yield* para travar temporariamente a execução; O generator se comunica pela interface do symbol.iterator, então cada momento que encontrar um yield a função pausa e o restante será executado apenas se chamar um próximo *next()*.
+
+## Callbacks e Promises
+
+Callbacks (funções passadas como parâmetro) e promises são utilizados para programação assíncrona e aguardar respostas de requisições para prosseguir com operações ou não, ou retornando erros e lidando com eles. 
+
+Antes, as callbacks eram muito utilizadas, mas facilmente deixava o código ilegível. Por isso, no ES6 as promises foram adicionadas para ajudar na construção de programação assíncrona. 
+
+Nos exemplos do ./callbacks-promises.js vemos um callback hell tentando lidar com as requisição
+
+**Sintaxe de promises:**
+
+''' const myPromise = new Promise((resolved, reject) => {
+    // trata a requisição
+    
+}); '''
+
+A promise possui *três status: pending, fulfilled e rejected.*
+Espere a resposta da requisição e execute o próximo bloco:
+
+''' myPromise.then((data) => {
+    // tratamento dos dados da requisição
+})
+ .catch(err) {
+     // throw new Error();
+ } '''
+
+ Usando *promise.all* o evento só acontece quando todas as promises estão prontas. Usando *promise.race* a promise que for respondida primeiro é executada.
+
+ ## Fetch
+
+ Faz requisições utilizando promises como base, simplificando o antigo *XMLHttpRequest*.
+
+ ''' fetch('url').then(responseStream => {
+     return responseStream.json();
+ })
+ .then(data => console.log(data)) '''
+
+ responseStream.json faz um parse transformando os dados em um json. O .then seguinte sempre captura o retorno (que é uma promise) do .then anterior.
