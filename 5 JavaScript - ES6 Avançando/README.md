@@ -45,21 +45,24 @@ Antes, as callbacks eram muito utilizadas, mas facilmente deixava o código ileg
 Nos exemplos do ./callbacks-promises.js vemos um callback hell tentando lidar com as requisição
 
 **Sintaxe de promises:**
-
-''' const myPromise = new Promise((resolved, reject) => {
+```
+const myPromise = new Promise((resolved, reject) => {
     // trata a requisição
     
-}); '''
+});
+```
 
 A promise possui *três status: pending, fulfilled e rejected.*
 Espere a resposta da requisição e execute o próximo bloco:
 
-''' myPromise.then((data) => {
+```
+myPromise.then((data) => {
     // tratamento dos dados da requisição
 })
  .catch(err) {
      // throw new Error();
- } '''
+ }
+ ```
 
  Usando *promise.all* o evento só acontece quando todas as promises estão prontas. Usando *promise.race* a promise que for respondida primeiro é executada.
 
@@ -67,9 +70,42 @@ Espere a resposta da requisição e execute o próximo bloco:
 
  Faz requisições utilizando promises como base, simplificando o antigo *XMLHttpRequest*.
 
- ''' fetch('url').then(responseStream => {
+```
+fetch('url').then(responseStream => {
      return responseStream.json();
  })
- .then(data => console.log(data)) '''
+ .then(data => console.log(data));
+```
 
- responseStream.json faz um parse transformando os dados em um json. O .then seguinte sempre captura o retorno (que é uma promise) do .then anterior.
+responseStream.json faz um parse transformando os dados em um json. O .then seguinte sempre captura o retorno (que é uma promise) do .then anterior. O fetch ainda permite um segundo parâmetro além da url, um objeto especificando o método HTTP, entre outras possibilidades.
+
+## Async/Await
+
+Forma de criar promises de maneira mais simples, principalmente para usar promises dentro de promises. 
+
+Colocar a palavra *async* antes da declaração de uma função a torna numa promise.
+
+Já o *await* só pode ser utilizado dentro da função async
+
+## EventEmitter
+
+Exclusivo do node. É necessário puxar o module events. No browser os eventos são pelo EventListener, com funcionamento um pouco diferente.
+
+```
+    const eventEmitter = require('events');
+```
+
+Programação assíncrona que dispara alguma coisa de acordo com a ocorrência de um evento.
+
+```
+const emitter = new EventEmitter();
+
+emitter.on('User Logged', data => {
+    console.log(data);
+})
+emitter.emit('User Logged', { User: Matheus Guimarães});
+```
+
+*emitter.on ->* Emiter dispara a função vinculada
+*emitter.emit ->* Evento foi emitido
+
