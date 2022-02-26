@@ -109,3 +109,105 @@ emitter.emit('User Logged', { User: Matheus Guimarães});
 *emitter.on ->* Emiter dispara a função vinculada
 *emitter.emit ->* Evento foi emitido
 
+##
+
+## Testes
+
+### Automatizados
+
+**Testes unitários:** Servem para testar a menor parte do código (métodos, funções, classe, componente)
+
+**Testes integrados:** Testam a integração entre as pequenas partes (função junto com outra função, componente junto com outro componente)
+
+**Testes funcionais (end to end):** Integração do sistema com outros sistemas. Percorre as funcionalidades como um usuário faria. 
+
+### Manuais ou Automatizados
+
+- Testes de usabilidade
+- Protótipos
+- Testes de aceitação do usuário
+- Testes funcionais
+- Exemplos
+- Alphas e Betas
+
+### Ferramentas de Teste
+- Testes de carga e performance
+- Segurança
+
+### TDD (Test Driven Development)
+
+Testar e refatorar em pequenos ciclos. Escreve o teste antes do código.
+
+a. Escreve o Teste | b. Escreve o código para passar no teste | c. Refatora o código
+
+### BDD (Behavior Driven Development)
+
+Visa integrar as regras de negócio em conjunto com a programação
+
+a. Testes | b. Documentação | c. Exemplos
+
+- Documentação dinâmica
+- Compartilhamento de conhecimento
+
+##
+
+### Prática de Testes
+
+**Mocha:** Test-runner muito descritivo, segue os parâmetros do BDD. É possível trabalhar com Node e no Browser.
+(outras opções jest, karma)
+
+```
+a. Adicionar mocha via npm
+b. Seguindo o princípio do TDD, escrever o teste primeiro e o código depois
+c. Code básico:
+
+// Capturar função nativa do node
+const assert = require('assert');
+// Capturar classe a ser testada
+const Math = require('path');
+
+// Recomenda-se não utilizar arrow function para não gerar problema de escopo (this) nos testes
+describe('test description', function() {
+    it('unit description', function() {
+        // escreve a lógica e testa a unidade
+        functionTestada(param, param2 => {
+            assert.equal(param2, expectedResult);
+            done();
+        )}
+    })
+
+    it('unit description', function() {
+        // outro teste
+    })
+})
+
+```
+
+A library **Chai** é útil na substituição do assert (que é nativo do Node e possui limitações descritivas). Ela é uma ferramenta de asserts e deixa o teste mais semântico.
+
+Com o Chai o esqueleto de teste acima ficaria:
+
+```
+// Capturar classe a ser testada
+const Math = require('path');
+// Requerir o Chai após instalação via npm
+const expect = require('Chai').expect;
+
+// Recomenda-se não utilizar arrow function para não gerar problema de escopo (this) nos testes
+describe('test description', function() {
+    it('unit description', function() {
+        // escreve a lógica e testa a unidade
+        functionTestada(param, param2 => {
+            expect(param2).to.equal(expectedResult);
+            done();
+        )}
+    })
+
+    it('unit description', function() {
+        // teste para objetos
+        expect(obj).to.have.property('name');
+    })
+})
+```
+
+**Sinon:** Mocka funções e observa se elas foram invocadas. Ferramenta que também pode ser utilizada para incrementar os testes.
