@@ -25,7 +25,7 @@ Os argumentos das funções podem ter um valor default. Na hora de declarar a fu
 
 ## Symbols e Iterators
 
-**Symbols:** Identificar único que nunca é igual a outro symbol. Bons para criaçao de atributos privados em objetos, mas ainda podem ser acessados pela função getOwnPropertySymbols.
+**Symbols:** Identificador único que nunca é igual a outro symbol. Bons para criaçao de atributos privados em objetos, mas ainda podem ser acessados pela função getOwnPropertySymbols.
 
 **Symbol.iterator:** Torna um objeto iterável. Por exemplo, array e strings possuem nativamente. Ou seja, objetos não são iteraveis por natureza, mas é possível adicionar manualmente o que os arrays e strings possuem. Para isso: *Sintaxe: obj = {values: [a, b, c], [Symbol.iterator]() {let id = 0; return {next: ()=> {i++; return {value: this.values[i - 1], done: i > this.values.length}}}}}* ou de forma mais fácil utilizando Generators **obj = {values: [a, b, c], *[Symbol.iterator]() {for(let cont = 0, 0 < obj.values.length; cont++>) {yield.this.values[cont]}}}**
 
@@ -211,3 +211,45 @@ describe('test description', function() {
 ```
 
 **Sinon:** Mocka funções e observa se elas foram invocadas. Ferramenta que também pode ser utilizada para incrementar os testes.
+
+##
+
+## Tratamento de Erros
+
+**Try, Catch:** Pode-se utilizar o try-catch para capturar um erro específico.
+```
+try {
+    // code with error
+} catch (err) {
+    console.log(err)
+} finally {
+    // do something you want regardless
+}
+```
+
+É possível instanciar erro com *const error = new Error('Erro 404')* e depois dando throw com *throw error*. Manipular a classe nativa Error do JavaScript via herança é possível, criando uma classe customizada e estendendo a classe Error.
+
+### Debugging
+
+É possível utilizar diversas técnicas de debug. As ferramentas do desenvolvedor nos navegadores são grandes aliados. Uma técnica muito comum é utilizar *breakpoints*.
+
+Outra abordagem é utilizar comandos no console em diversas partes do código para entender os problemas de escopo ou diversas outras informações que estão gerando o bug.
+
+```
+console.log('message') // -> Mostra uma mensagem
+console.warn('') // -> Mostra uma mensagem em amarelo
+console.error('') // -> Mostra uma mensagem em vermelho
+
+console.trace() // -> Mostra onde o código foi executado e em qual linha 
+
+console.group('NomeGrupo')
+console.log('Message1')
+console.log('Message2')
+console.groupEnd('NomeGrupo') // -> Exibe um grupo de mensagens no console que são minimizáveis
+
+console.time('Log time')
+console.timeEnd('Log time') // -> Verifica a duração de execução dos códigos
+
+console.table([Array]) // -> Gera uma tabela organizada com dados mais longos
+console.assert(1 == 0, 'message') // -> Exibe a message apenas se a verificação for false
+```
