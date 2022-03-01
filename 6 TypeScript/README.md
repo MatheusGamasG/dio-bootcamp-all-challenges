@@ -33,7 +33,7 @@ sum('a', 'b'); // Passando string ocorre um erro
 
 ## Interfaces
 
-Funcionam semelhantemente às classes, mas sem estrutura de dados completa (são apenas contratos), porém tipando os atributos e métodos.
+Funcionam semelhantemente às classes, mas sem estrutura de dados completa (são apenas contratos), porém tipando os atributos e métodos. Interfaces não são instanciadas, então quando for criar uma classe a partir de uma interface precisa chamar *class className implements InterfaceName*
 
 ```
 interface NomeInterface {
@@ -56,7 +56,7 @@ const variável: NomeInterface = {
 
 ## Types
 
-Enquanto interfaces são muito usadas para os contratos de uma estrutura de dados ou de classes, enquanto os tipos para fazer junções entre as interfaces
+Enquanto interfaces são muito usadas para os contratos de uma estrutura de dados ou de classes, os tipos são usados para fazer junções entre as interfaces
 
 ```
 // Continuando a partir do código anterior (interfaces)
@@ -80,3 +80,103 @@ Ou seja, a variável nova do NovoTipo adquiriu as características de todas as s
 
 ## HTML Elements
 
+No TypeScript é necessário especificar qual o tipo de HTMLElement que você está querendo pegar no DOM. Isso porque por padrão o TypeScript traz todo HTMLElement como um genérico sem todas as funcionalidades.
+
+```
+const input = document.getElementById('input') as HTMLInputElement;
+```
+
+## Generic Types
+
+Existe a possibilidade de, caso você não saiba qual o tipo de dados que uma função receberá, usar tipagem dinâmica
+
+```
+    dados: any,
+```
+
+## Condicionais a partir de parâmetros
+
+A tipagem pode oferecer alguns tipos de erros quando passarmos um tipo por parâmetro e tentarmos verificar condicionais. Por isso, podemos utilizar o *in* .
+
+```
+interface IInterface1 {
+    atributo1:string,
+    atributo2:string
+}
+
+interface IInterface2 extends IInterface1 {
+    atributo3:string
+}
+
+function doSomething(interfaceObject: IInterface1 | IInterface2) {
+    if('atributo3' in interfaceObject) {
+        // do something here
+    } else {
+        // do something else here
+    }
+}
+```
+
+A questão é que seria impossível verificar por essa condicional if o interfaceObject.atributo3, pois o TypeScript acusaria erro. Só seria possível acessar diretamente as propriedades do IInterface1 (atributo1 e atributo2). Portanto, utilizar o *in* será muito prático para entender se o objeto é originado por qual interface.
+
+## Variáveis opcionais
+
+No entanto, é possível não utilizar duas interfaces para apenas alguns atributos a mais (via herança). Podemos simplificar com atributos opcionais (adicionando um ?) e isso facilitaria na hora de fazer as condicionais. O exemplo acima ficaria do seguinte modo:
+
+```
+    interface IInterface1 {
+    atributo1:string,
+    atributo2:string,
+    atributo3?:string
+}
+
+function do Something(interfaceObject: IInterface1) {
+    if(interfaceObject.atributo3) {
+        // do something here
+    } else {
+        // do something else here
+    }
+}
+```
+
+## Readonly e Private
+
+Permite que os atributos da classe/interface/type sejam privados ou somente leitura. Por exemplo:
+
+```
+class Frutas {
+    readonly nome:string;
+    sabor:string;
+
+    constructor(nome, sabor) {
+        this.nome = nome;
+        this.sabor = sabor;
+    }
+}
+
+const fruta = new Frutas('Banana', 'Doce');
+fruta.nome = 'Morango';
+```
+
+Nesse caso, a atribuição de um novo nome (Morango) retornaria erro na compilação.
+
+## Omit
+
+Dentro dos diamantes <> é possível utilizar algumas funções do TypeScript, como o Omit, que omite um atributo da interface, caso necessário. São chamados de Utility Types e existe muitas opções na documentação. Exemplo:
+
+```
+interface Pessoa {
+    nome: string,
+    idade: number,
+    nacionalidade: string
+}
+
+interface Brasileira extends Omit<Pessoa, 'nacionalidade'> {
+
+}
+
+const pessoa: Brasileira = {
+    nome: 'Fulano',
+    idade: 14
+}
+```
