@@ -115,7 +115,7 @@ A segunda coisa é que o segundo botão não apareceria se não fosse o *props.c
 
 **O que é estado?** Estado que um componente está e é um dado que varia com o tempo. Diferente do props que são dados passados de componente para componente.
 
-Quando o estado é mudado deve causar uma nova renderização daquele componente. O estado só é possível de ser utilizado com Componentes de Classe. Componentes funcionais (que vimos até agora) não podem acessar states.
+Quando o estado é mudado deve causar uma nova renderização daquele componente. O estado só pode ser utilizado em componentes de classe, que possui acesso ao *this*. Componentes funcionais (que vimos até agora) não podem acessar states.
 
 O Ciclo de Vida do React passa por um fluxo esperado e algumas funções, basicamente temos:
 
@@ -156,4 +156,144 @@ class App extends Component {
         );
     }
 }
+```
+
+## Webpack
+
+Webpack é um module blunder que facilita a organização de arquivos e reduz os arquivos javascript para que possa ser importado diretamente no html, por exemplo. Melhora muito a otimização do projeto.
+
+### Principais conceitos:
+
+a) Entry - Ponto de entrada: O arquivo raiz principal para mapear(via grafos) onde estão os outros módulos
+b) Output: Quais são os módulos que vão exportar para o arquivo final.
+c) Loaders: Servem para permitir que o Webpack gerencie outros tipos de arquivos além do javascript
+d) Plugins: Servem para injeção de scripts, minificação, otimização de pacotes, etc.
+e) Mode: Passar os tipos de configurações que queremos no Webpack
+    *Production (Otimizações internas para entrar em produção), Development (Executa três plugins mais básicos para ajudar no debug e sem as otimizações) ou None (Nenhuma configuração)*
+
+### Configurando
+
+Primeiramente, instalar a dependência via npm:
+
+```
+npm install -D webpack webpack-cli
+```
+
+Depois, criar um arquivo webpack.config.js e fazer a configuração inicial:
+```
+const path = require('path');
+
+module.exports = {
+    entry: './src/index.js'
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundler.js'
+    }
+}
+```
+As propriedades do path estão explicados nos principais conceitos. 
+Configurando um script com "webpack --mode production" ele já trará o resultado (output) como um bundler.js com o arquivo otimizado para produção.
+
+Vamos instalar o Babel também. Ele transpila os dados para que navegadores com suportes antigos de javascript possam entender o código.
+```
+npm install @babel/core babel-loader @babel/preset-env @babel/preset-react -dev
+```
+
+Para que o webpack possa utilizar os recursos do babel, adicionar ao webpack.config.js outra propriedade ao exports:
+```
+module: {
+    rules: [
+        {
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: {
+                loader: "babel-loader"
+            }
+        }
+    ]
+}
+```
+
+Criar um arquivo .babelrc com o seguinte conteúdo dentro: (esse arquivo é o padrão que o babel vai ler todos os presets e plugins dentro dele)
+```
+{
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react"
+    ]
+}
+```
+
+Para começar a rodar o react em modo desenvolvimento, criar o arquivo index.js e app.js na pasta src e definir algumas importações e renderização padrão:
+```
+// Para o arquivo index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app.js'
+
+ReactDOM.render(<App />, document.getElementById("root"));
+```
+```
+// Para o arquivo app.js
+import React from 'react';
+
+const App = () => {
+    return <div>Hello world!</div>
+}
+
+export default App;
+```
+Por fim é necessário configurar o arquivo html que vai ser a base também (criar um index.html):
+```
+<html>
+<head></head>
+<body>
+    <div id='root'>
+    </div>
+</body>
+</html>
+```
+
+Instalar o plugin e loader do webpack em relação ao html com:
+```
+npm install -D html-web-plugin html-loader
+```
+
+Requerir o plugin, então adicionar no webpack.config.js:
+```
+import webPackHtmlPlugin = require("html-web-plugin");
+```
+
+Adicionar o mode: production (ou development) e o plugin no JSON do webpack.config.js.
+```
+module.exports = {
+    [...]
+        mode: production,
+        plugins: [
+            new webPackHtmlPlugin({
+                template: "indexhtmlpath",
+                filename: "htmlOutputAlongsideBundler.js"
+            })
+        ]
+    [...]
+}
+```
+
+Adicionar mais uma dependência:
+```
+npm install -D webpack-dev-server
+```
+
+Ir no package.json e adicionar o script: 
+```
+    "start-dev": "webpack-dev-server"
+```
+
+E usar o script para gerar a página e ter hot reload (dar build antes para gerar o bundler.js e bundler.html) :)
+
+**Nota importante:** Para mais informações do webpack: https://webpack.js.org/concepts/
+
+**Nota importante:** Usar o comando abaixo via npm já nos traz esse ambiente montado, porém conhecer como ele é construído é bem importante, pois é facilmente manipulável e consegue entregar uma aplicação com apenas os packages e plugins necessários para o objetivo do projeto.
+```
+npx create-react-app
 ```

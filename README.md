@@ -11,3 +11,5 @@
 - Primeiro website com HTML e CSS
 - JavaScript - ESS6 (Básico)
 - JavaScript - ES6 (Avançado)
+- TypeScript
+- Introdução ao React
