@@ -2,6 +2,7 @@ const path = require('path');
 const webPackHtmlPlugin = require('html-webpack-plugin')
 
 module.exports = {
+    devtool: "sourcemap",
     mode: 'development',
     entry: './src/index.js',
     output: {

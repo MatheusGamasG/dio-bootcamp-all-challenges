@@ -164,11 +164,11 @@ Webpack é um module blunder que facilita a organização de arquivos e reduz os
 
 ### Principais conceitos:
 
-a) Entry - Ponto de entrada: O arquivo raiz principal para mapear(via grafos) onde estão os outros módulos
-b) Output: Quais são os módulos que vão exportar para o arquivo final.
-c) Loaders: Servem para permitir que o Webpack gerencie outros tipos de arquivos além do javascript
-d) Plugins: Servem para injeção de scripts, minificação, otimização de pacotes, etc.
-e) Mode: Passar os tipos de configurações que queremos no Webpack
+- a) Entry - Ponto de entrada: O arquivo raiz principal para mapear(via grafos) onde estão os outros módulos
+- b) Output: Quais são os módulos que vão exportar para o arquivo final.
+- c) Loaders: Servem para permitir que o Webpack gerencie outros tipos de arquivos além do javascript
+- d) Plugins: Servem para injeção de scripts, minificação, otimização de pacotes, etc.
+- e) Mode: Passar os tipos de configurações que queremos no Webpack
     *Production (Otimizações internas para entrar em produção), Development (Executa três plugins mais básicos para ajudar no debug e sem as otimizações) ou None (Nenhuma configuração)*
 
 ### Configurando
@@ -293,7 +293,168 @@ E usar o script para gerar a página e ter hot reload (dar build antes para gera
 
 **Nota importante:** Para mais informações do webpack: https://webpack.js.org/concepts/
 
-**Nota importante:** Usar o comando abaixo via npm já nos traz esse ambiente montado, porém conhecer como ele é construído é bem importante, pois é facilmente manipulável e consegue entregar uma aplicação com apenas os packages e plugins necessários para o objetivo do projeto.
+**Nota importante:** Usar o comando abaixo via npm já nos traz esse ambiente montado para iniciantes, porém conhecer como ele é construído é bem importante, pois entrega uma aplicação com o necessário para utilização.
 ```
 npx create-react-app
 ```
+
+## ESLint
+
+Dependência para adronização do projeto com regras específicas como espaçamento de indentação, etc. Para instalar:
+```
+npm install --save-dev eslint babel-eslint eslint-plugin-react eslint-watch
+```
+
+É necessário criar um arquivo ".eslinttrc" para a configuração do ESLint
+```
+// configurações customizadas
+```
+
+No package.json criar um script para dar start no ESLint em todos os arquivos que você quer monitorar com ele (no caso, os .js)
+```
+eslint: "eslint ./src/*.js"
+```
+
+A partir das configurações fornecidas, ocorrerá erros expostos pelo eslint se fugir das espeficações configuradas.
+
+## Renderização Condicional
+
+Podemos colocar elementos e componentes como passíveis ou não de renderização dependendo de uma determinada condição.
+Exemplo:
+
+```
+// no arquivo App.js
+
+const existeCliente = false;
+
+// Como retorno de app, adicionar:
+{existeCliente && (
+    <div>
+        <button>Pegue todas as informações pessoais!</button>
+    </div>
+)}
+```
+
+Nesse caso, o botão não está aparecendo para o usuário e não foi nem renderizado. Porém, se fosse true ele seria renderizado. Este seria um caso com apenas um if.
+
+Para usar if e else, usar ternário (condition ? do : doelse). No mesmo exemplo:
+```
+{existeClient ? (
+    <div>
+        <button>Pegue todas as informações pessoais!</button>
+    </div>
+) : {
+    <div>
+        Acesso negado.
+    </div>
+}
+}
+```
+
+**É uma boa prática separar os retornos condicionais em funções. Exemplo, criar uma função para cuspir o button e outra para o acesso negado, pois facilita a leitura do código**
+```
+{existeClient? mostraBotao() : acessoNegado()}
+```
+
+Há também a possibilidade de exibir todo um cponente ou não. Para isso podemos fazer o if dentro do próprio componente e não no corpo do retorno do App.js.
+
+```
+const existeCliente = false;
+
+const ComponenteCondicional = {
+    if(existeCliente == false) return null
+
+    return (
+        <div>
+            <p>conteúdo do componente</p>
+        </div>
+    )
+}
+
+
+function App() {
+    return (
+        <div>
+            <h1>Bem-vindo</h1>
+            <ComponenteCondicional />
+        </div>
+    )
+}
+```
+
+Nesse caso, o ComponenteCondicional só aparecerá se satisfizer a condição do if. O retorno null faz com que o React não renderize o componente.
+
+## Listas e Chaves (Keys)
+
+É possível realizar manipulações de array para renderizar um componente. Exemplo:
+```
+const listaPessoas = [
+    {
+        id: 1,
+        nome: Matheus
+    },
+    {
+        id:2,
+        nome: Marcus
+    },
+    {
+        id: 3,
+        nome: Ana Paula
+    },
+    {
+        id: 4,
+        nome: Frederico
+    }
+]
+
+const renderPessoa = (pessoa, index) => {
+    return <li>{pessoa.nome}</li>
+} 
+
+function App() {
+    return (
+        <div>
+            <h1>Bem-vindo</h1>
+            <ul>
+                {listaPessoas.map(renderPessoa)}
+            </ul>
+        </div>
+    )
+}
+```
+
+Desse jeito o map vai renderizar uma li por pessoa. No entanto, o React pede que cada li tenha uma chave (key) de identificação. Podemos usar o index da função para cada interação do map. Sendo todo o código igual ao exposto anteriormente, mas com a seguinte modificação:
+```
+    const renderPessoa = (pessoa, index) => {
+        return <li key="index">{pessoa.nome}</li>
+    }
+```
+O React usa a chave para reconhecer as alterações feita nesses itens. Embora não quebre a aplicação, pode gerar problemas de performance e de renderização de cada componente. As chaves devem ser únicas **apenas entre elementos irmãos.**
+
+## Manipulando Eventos
+
+Muito semelhante à manipulação do DOM, mas com algumas diferenças sintáticas. 
+
+- a) No React se usa o padrão camelCase.
+- b) Usa funções para manipular os eventos.
+
+Exemplo: 
+```
+const showEvent = () => {
+  return alert('Obediente.')
+}
+
+const Button = <button className="botao" onClick={showEvent}>Clique aqui!</button>
+
+function App() {
+  return (
+    <Fragment>
+      <h1>Aula de React</h1>
+      <p>Estamos aprendendo...</p>
+      {Button }
+    </Fragment>
+  )
+}
+```
+
+Veja como o evento no botão está em camelCase, diferente do que vemos no javascript padrão. E também que estamos passando uma função pra ele. O **primeiro argumento** da função executada pelo evento dará todos os parâmetros do DOM que gerou o evento. Assim, conseguimos manipular os eventos interagindo com o DOM de forma igual às regras do JavaScript Vanilla. Inclusive, os eventos possíveis são os mesmos.
