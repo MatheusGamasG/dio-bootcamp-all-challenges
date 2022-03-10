@@ -27,7 +27,17 @@ Os argumentos das funções podem ter um valor default. Na hora de declarar a fu
 
 **Symbols:** Identificador único que nunca é igual a outro symbol. Bons para criaçao de atributos privados em objetos, mas ainda podem ser acessados pela função getOwnPropertySymbols.
 
-**Symbol.iterator:** Torna um objeto iterável. Por exemplo, array e strings possuem nativamente. Ou seja, objetos não são iteraveis por natureza, mas é possível adicionar manualmente o que os arrays e strings possuem. Para isso: *Sintaxe: obj = {values: [a, b, c], [Symbol.iterator]() {let id = 0; return {next: ()=> {i++; return {value: this.values[i - 1], done: i > this.values.length}}}}}* ou de forma mais fácil utilizando Generators **obj = {values: [a, b, c], *[Symbol.iterator]() {for(let cont = 0, 0 < obj.values.length; cont++>) {yield.this.values[cont]}}}**
+**Symbol.iterator:** Torna um objeto iterável. Por exemplo, array e strings possuem nativamente. Ou seja, objetos não são iteraveis por natureza, mas é possível adicionar manualmente o que os arrays e strings possuem. Para isso: *Sintaxe: obj = {values: [a, b, c], [Symbol.iterator]() {let id = 0; return {next: ()=> {i++; return {value: this.values[i - 1], done: i > this.values.length}}}}}* ou de forma mais fácil utilizando Generators 
+
+```
+obj = {
+    values: ['Matheus', '26', 'Professor'],
+    *[Symbol.iterator]() {
+        for (let cont = 0; cont < obj.values.length; cont++) 
+        yield this.values[cont];
+    }
+}
+```
 
 **array[Symbol.Iterator]().next() ->** Sintaxe básica para invocar o próximo value da iteração. Utiliza value (any) e done (boolean);
 

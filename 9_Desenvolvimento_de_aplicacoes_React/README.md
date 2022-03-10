@@ -202,7 +202,7 @@ Guarda todos os estados, as informações e todas as alterações têm que ser f
 
 ### View
 
-Recebe as notificações da store sobre as moficiações e passa os dados para as visões abaixo dela.
+Recebe as notificações da store sobre as modificações e passa os dados para as visões abaixo dela.
 
 A Arquitetura Flux possui diversas implementações, a mais popular dela é o Redux. Reflux, Mobx e Vuex também são utilizadas comumente.
 
@@ -231,6 +231,42 @@ Os reducers cuidam de descobrir qual estado muda.
 #### Reducers
 Dicide os estados em pequenos reducers para descobrir como lidar com esse estado. Os estados são imutáveis.
 
-### Views
+#### Views
 Em React, adiciona novos conceitos para conectar a View à Store: Provider (wrapper da árvore de componentes), connect() (conecta com o store) e selector (pega os updates dos estados)
+
+### Abordagem prática
+
+Para instalar no projeto React, é necessário rodar os comandos:
+```
+npm install react-redux
+npm install --save-dev redux-devtools
+```
+
+O devtools além de ser instalado no projeto também precisa ser baixado como extensão no google chrome.
+
+No index.js é necessário importar e realizar algumas configurações para criar o store: (pode ser adicionado mais de um reducer)
+```
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { reducer } from './reducerspath'
+
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+// O Provider vai ser um wrapper ao redor do component passando a store como props
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+
+```
+
+<!-- Encerrei as anotações por hora, no último vídeo da aula 2 de redux -->
+
+## Comunicação Avançada entre as Aplicações
 

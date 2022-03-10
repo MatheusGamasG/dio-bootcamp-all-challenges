@@ -55,3 +55,5 @@ const Card = () => {
 ```
 
 Esse exemplo permite perceber como o estado do valor, que está na tag p, pode mudar de acordo com as funções, desde que o valor seja gerado com o useState.
+
+O UseState é o **primeiro hook** que aprendi.

@@ -22,7 +22,7 @@ A linguagem continua evoluindo e precisa passar por um número de etapas para no
 
 **- Hoisting:** Içamento das variáveis e das funções. A diferença entre os dois içamentos é que as variáveis são içadas, mas sem valor atribuído, então se a chamarmos antes da atribuição, o resultado será undefined. As funções são içadas como um todo, então se chamarmos uma função ANTES da declaração dela, ela funcionará perfeitamente.
 
-**- Imutabilidade:** Conceito de linguagem funcional, as variáveis de tipos primitivos nunca mudam por métodos e se precisar muda-la cria uma nova. Em JavaScript o conceito é evitar fazer essas mudanças, mas é um desafio quando trabalhando com arrays e objetos, pois mesmo consts permitem redeclaração de suas propriedades.
+**- Imutabilidade:** Conceito de linguagem funcional, as variáveis de tipos primitivos nunca mudam por métodos e se precisar muda-la se cria uma nova. Em JavaScript o conceito é evitar fazer essas mudanças, mas é um desafio quando trabalhando com arrays e objetos, pois mesmo consts permitem redeclaração de suas propriedades.
 
 *Nota:* Objetos e Arrays são passados para funções por referência na memória, ou seja, se modificarmos, modifica o Objeto/Array original. Uma boa prática é criar uma cópia rasa do Objeto. Com “...Objeto” na declaração de um novoObjeto.
 

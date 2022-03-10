@@ -13,3 +13,4 @@
 - JavaScript - ES6 (Avançado)
 - TypeScript
 - Introdução ao React
+- Trabalhando com Componentes em React
