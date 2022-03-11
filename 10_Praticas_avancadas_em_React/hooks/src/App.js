@@ -1,18 +1,40 @@
+import React, { Component } from 'react'
 import './App.css';
-import { useState } from 'react'
+import Counter from './Counter'
 
-function App() {
+const Buttons = ({ increment, decrement, count }) => {
+    return (
+        <div>
+            <h1>Valor Atual: {count}</h1>
+            <div>
+                <button onClick={increment}>Adicionar</button>
+            </div>
+            <div>
+                <button onClick={decrement}>Remover</button> 
+            </div>
+        </div>
+    )
+}
 
-  const [counter, setCounter] = useState(0);
-  const [counter2, setCounter2] = useState(0);
+class App extends Component {
 
-  return (
-    <div>
-      <h1>Teste</h1>
-      <button onClick={() => setCounter(counter + 1)}>{counter}</button>
-      <button onClick={() => setCounter2(counter2 + 1)}>{counter2}</button>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <Counter render={
+            ( { increment, decrement, count } ) => (
+                <Buttons 
+                    increment={increment}
+                    decrement={decrement}
+                    count={count}    
+                />
+            )
+        }>
+
+        </Counter>
+      </div>
+    )
+  }
 }
 
 export default App;
