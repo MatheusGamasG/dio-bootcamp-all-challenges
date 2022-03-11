@@ -251,3 +251,32 @@ function App() {
 ```
 
 Por meio do atributo current do ref do elemento, é possível acessar qualquer atributo nativo dele. Como no exemplo, o focus.
+
+## Dumb Components
+
+Componentes sem lógica interna, apenas para renderizar algo na tela (apresentação) e recebem valores via props, são dumbs pq não fazem nenhum tratamento de dados. Normalmente não usam states. Os cálculos ficariam nos containers.
+
+Ex: Cards, Lists. **Verificar pasta dumbcomponents com exemplos de tabela e botão.**
+
+Nos Dumb Components é muito interessante usar o memo para evitar que ocorra alguma re-renderização desnecessária sem mudança de props quando atualizamos um elemento pai, já que eles não possuem estado.
+
+```
+import React, { memo } from 'react'
+
+function Button({ onClick }) {
+    return (
+        <button onClick={onClick}>Delete</button>
+    );
+} 
+
+export default memo(Button)
+```
+
+## Smart Components
+
+Preocupam-se como as coisas vão funcionar, mas tem aplicações mais especificas do que os dumb components. Podem conter smart e dumb components. Na maioria dos casos possuem estado e chamam outros fluxos do sistema.
+
+Dificilmente serão usados em outro contexto, pois terá contextos bem específicos.
+
+Diferente dos dumb components, não costumam possuir estilizações CSS.
+
