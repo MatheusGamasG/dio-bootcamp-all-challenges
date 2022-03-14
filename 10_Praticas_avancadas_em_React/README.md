@@ -62,7 +62,7 @@ Isso prejudica bastante o SEO da página e cria nós desnecessários.
 
 ## Error Boundary
 
-Captura o erro sem quebrar todo o layout do React, que é o que acontece normalmente. PAra iso, é necessário envelopar toda a aplicação com um Error Boundary. Ou seja, encapsular o componente <App /> em um error boundary.
+Captura o erro sem quebrar todo o layout do React, que é o que acontece normalmente. Para isso, é necessário envelopar toda a aplicação com um Error Boundary. Ou seja, encapsular o componente <App /> em um error boundary.
 
 ```
 class ErrorBoundary extends Component {
@@ -280,3 +280,7 @@ Dificilmente serão usados em outro contexto, pois terá contextos bem específi
 
 Diferente dos dumb components, não costumam possuir estilizações CSS.
 
+## Organização de Projetos com React
+
+-> No App.js costuma ter as rotas, providers, tudo o que for global. 
+-> Separar muito bem as pastas dentro de src. components, assets (styles, imgs), etc.
