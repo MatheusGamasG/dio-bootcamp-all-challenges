@@ -16,3 +16,9 @@
 08) Trabalhando com Componentes em React
 09) Desenvolvimento de aplicações para internet com React
 10) Práticas avançadas em projetos com React
+11) Introdução aos React Hooks 
+12) Introdução ao React Native
+13) Introdução ao mySQL
+14) Introdução ao MongoDB
+15) Introdução ao Node
+16) Explorando o Rest com Node
